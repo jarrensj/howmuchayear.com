@@ -19,6 +19,10 @@ const Math = () => {
     setInputValue(value === '' ? '' : parseFloat(value));
   };
 
+  const formatWithCommas = (value: number) => {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <div>
       <h1 className="text-3xl mb-2">how much did you make today?</h1>
@@ -32,7 +36,7 @@ const Math = () => {
       { inputValue !== '' &&
         <>
           &nbsp;a day
-          <h2 className="text-2xl">is {inputValue < 0 ? `-$${-result}` : `$${result}`} a year</h2>
+          <h2 className="text-2xl">is {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`} a year</h2>
           <p>if there are 250 trading days a year </p>
         </>
       }
