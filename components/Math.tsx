@@ -21,8 +21,14 @@ const Math = () => {
 
   return (
     <div>
-      <h1 className="text-4xl">how much did you make today?</h1>
-      <input type="number" value={inputValue} onChange={handleInputChange} />  
+      <h1 className="text-3xl mb-2">how much did you make today?</h1>
+      <p className="text-sm mb-2">type how much you made in the input box below</p>
+      <input 
+       type="number"
+       className="mb-2 w-25 py-1 text-lg text-center"
+       value={inputValue}
+       onChange={handleInputChange}
+      />
       { inputValue !== '' &&
         <>
           &nbsp;a day
