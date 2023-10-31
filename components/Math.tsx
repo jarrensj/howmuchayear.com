@@ -25,8 +25,8 @@ const Math = () => {
       <input type="number" value={inputValue} onChange={handleInputChange} />  
       { inputValue !== '' &&
         <>
-           &nbsp;a day 
-          <h2 className="text-2xl">is ${result} a year </h2>
+          &nbsp;a day
+          <h2 className="text-2xl">is {inputValue < 0 ? `-$${-result}` : `$${result}`} a year</h2>
           <p>if there are 250 trading days a year </p>
         </>
       }
