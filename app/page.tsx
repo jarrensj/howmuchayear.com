@@ -1,12 +1,19 @@
 import Image from 'next/image'
 import Math from '../components/Math'
 import OmakaseClick from '../components/OmakaseClick'
+import Link from 'next/link'
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 text-center">
-      <h1 className="text-4xl mb-2">How Much A Year</h1>
-      <Math />
-      <OmakaseClick />
-    </main>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex flex-col flex-grow  items-center p-24 text-center">
+        <h1 className="text-4xl mb-2">How Much A Year</h1>
+        <Math />
+        <OmakaseClick />
+      </main>
+      <footer className="text-center p-4">
+        <Link href="https://jarrensj.com">made by jarrensj</Link>
+      </footer>
+    </div>
   )
 }
