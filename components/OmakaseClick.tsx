@@ -9,7 +9,7 @@ const OmakaseClick = () => {
 
     const handleOnClick = (event:MouseEvent) => {
       jsConfetti.addConfetti({
-        emojis: ['🍣','💰'],
+        emojis: ['📈','📉'],
         emojiSize: 100,
         confettiNumber: 24,
       });
