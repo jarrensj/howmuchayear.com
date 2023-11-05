@@ -29,7 +29,7 @@ const Math = () => {
       <p className="text-sm mb-2">type how much you made in the input box below</p>
       <input 
        type="number"
-       className="mb-2 w-25 py-1 text-lg text-center"
+       className="mb-2 w-25 py-1 text-lg text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
        value={inputValue}
        onChange={handleInputChange}
       />
