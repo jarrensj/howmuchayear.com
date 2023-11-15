@@ -1,10 +1,12 @@
 'use client'
 
 import { useState, useEffect, ChangeEvent } from 'react';
+import styles from './Math.module.css'; 
 
 const Math = () => {
   const [inputValue, setInputValue] = useState<number | ''>('');
   const [result, setResult] = useState<number>(0);
+  const [shrinkClass, setShrinkClass] = useState('');
 
   useEffect(() => {
     if (inputValue !== '') {
@@ -17,6 +19,14 @@ const Math = () => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value === '' ? '' : parseFloat(value));
+    if (shrinkClass) setShrinkClass(''); 
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && inputValue === '') {
+      setShrinkClass(styles.shrink);
+      setTimeout(() => setShrinkClass(''), 300); 
+    }
   };
 
   const formatWithCommas = (value: number) => {
@@ -29,9 +39,10 @@ const Math = () => {
       <p className="text-sm mb-2">type how much you made in the input box below</p>
       <input 
        type="number"
-       className="mb-2 w-25 py-1 text-lg text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+       className={`mb-2 w-25 py-1 text-lg text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${shrinkClass}`}
        value={inputValue}
        onChange={handleInputChange}
+       onKeyDown={handleKeyDown}
       />
       { inputValue !== '' &&
         <>
