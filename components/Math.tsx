@@ -5,18 +5,23 @@ import { useState, useEffect, ChangeEvent } from 'react';
 const Math = () => {
   const [inputValue, setInputValue] = useState<number | ''>('');
   const [result, setResult] = useState<number>(0);
+  const [multiplier, setMultiplier] = useState<number>(250); 
 
   useEffect(() => {
     if (inputValue !== '') {
-      setResult(inputValue * 250);
+      setResult(inputValue * multiplier);
     } else {
       setResult(0);
     }
-  }, [inputValue]);
+  }, [inputValue, multiplier]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value === '' ? '' : parseFloat(value));
+  };
+
+  const changeMultiplier = () => {
+    setMultiplier(multiplier === 250 ? 365 : 250); 
   };
 
   const formatWithCommas = (value: number) => {
@@ -37,7 +42,7 @@ const Math = () => {
         <>
           &nbsp;a day
           <h2 className="text-2xl">is {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`} a year</h2>
-          <p>if there are 250 trading days a year </p>
+          <p onClick={changeMultiplier}>if there are {multiplier} trading days a year</p>
         </>
       }
     </div>
