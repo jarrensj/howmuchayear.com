@@ -35,7 +35,10 @@ const Math = () => {
   };
 
   const formatWithCommas = (value: number) => {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const fixedValue = value.toFixed(2);
+    let [integerPart, decimalPart] = fixedValue.split('.');
+    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return `${integerPart}.${decimalPart}`;
   };
 
   return (
