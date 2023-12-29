@@ -56,7 +56,13 @@ const Math = () => {
         <>
           &nbsp;a day
           <h2 className="text-2xl">is {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`} a year</h2>
-          <p onClick={changeMultiplier}>if there are {multiplier} trading days a year</p>
+          <p onClick={changeMultiplier} className="cursor-pointer">
+            if there are&nbsp;
+            <span className="hover:text-blue-500">
+              {multiplier}
+            </span>
+            &nbsp;trading days a year
+          </p>
         </>
       }
     </div>
