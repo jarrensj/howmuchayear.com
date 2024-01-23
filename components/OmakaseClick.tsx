@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import JSConfetti from 'js-confetti'; 
 
 const OmakaseClick = () => {
@@ -22,12 +22,7 @@ const OmakaseClick = () => {
     };
   }, []);
 
-
-
-  return (
-      <>
-      </>
-  );
+  return null;
 };
 
 export default OmakaseClick;
