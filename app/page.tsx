@@ -12,7 +12,10 @@ export default function Home() {
         <OmakaseClick />
       </main>
       <footer className="text-center p-4">
-        <Link href="https://jarrensj.com">made by jarrensj</Link>
+        made by&nbsp;
+        <Link href="https://jarrensj.com" className="text-blue-500 hover:underline" target="_blank">
+          jarrensj
+        </Link>
       </footer>
     </div>
   )
