@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex flex-col flex-grow  items-center p-24 text-center">
-        <h1 className="text-4xl mb-2">How Much A Year</h1>
+        <h1 className="mb-2">How Much A Year</h1>
         <Math />
         <OmakaseClick />
       </main>
