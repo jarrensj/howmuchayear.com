@@ -1,19 +1,22 @@
 'use client'
 
 import { useState, useEffect, ChangeEvent } from 'react';
-import styles from './Math.module.css'; 
+import styles from './Math.module.css';
 
 const Math = () => {
   const [inputValue, setInputValue] = useState<number | ''>('');
   const [result, setResult] = useState<number>(0);
   const [multiplier, setMultiplier] = useState<number>(250); 
   const [shrinkClass, setShrinkClass] = useState('');
+  const [projectedIncome, setProjectedIncome] = useState<number>(0);
 
   useEffect(() => {
     if (inputValue !== '') {
       setResult(inputValue * multiplier);
+      calculateProjectedIncome();
     } else {
       setResult(0);
+      setProjectedIncome(0);
     }
   }, [inputValue, multiplier]);
 
@@ -32,6 +35,23 @@ const Math = () => {
 
   const changeMultiplier = () => {
     setMultiplier(multiplier === 250 ? 365 : 250); 
+  };
+
+  const calculateProjectedIncome = () => {
+    const today = new Date();
+    const startOfYear = new Date(today.getFullYear(), 0, 1);
+    const endOfYear = new Date(today.getFullYear(), 11, 31);
+    
+    const totalDaysThisYear = ((endOfYear.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    const daysPassedThisYear = ((today.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
+    const fractionOfYearPassed = daysPassedThisYear / totalDaysThisYear;
+    
+    const tradingDaysPassed = fractionOfYearPassed * multiplier;
+    const tradingDaysLeft = multiplier - tradingDaysPassed;
+    
+    const dailyIncome = Number(inputValue) || 0;
+    const projected = dailyIncome * tradingDaysLeft;
+    setProjectedIncome(projected);
   };
 
   const formatWithCommas = (value: number) => {
@@ -63,6 +83,9 @@ const Math = () => {
             </span>
             &nbsp;trading days a year
           </p>
+          <h3 className="text-xs mt-2">
+            Rough projected rest of the year income at this rate and the amount of days left: {inputValue < 0 ? `-$${formatWithCommas(-projectedIncome)}` : `$${formatWithCommas(projectedIncome)}`}
+          </h3>
         </>
       }
     </div>
