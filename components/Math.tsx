@@ -73,6 +73,7 @@ const Math = () => {
        value={inputValue}
        onChange={handleInputChange}
        onKeyDown={handleKeyDown}
+       placeholder="Enter a number"
       />
       { inputValue !== '' &&
         <>
