@@ -61,6 +61,8 @@ const Math = () => {
     return `${integerPart}.${decimalPart}`;
   };
 
+  const pnlColorClass = result >= 0  ? 'text-green-700' : 'text-red-700';
+
   return (
     <div>
       <h1 className="text-3xl mb-2">how much did you make today?</h1>
@@ -75,7 +77,11 @@ const Math = () => {
       { inputValue !== '' &&
         <>
           &nbsp;a day
-          <h2 className="text-2xl">is {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`} a year</h2>
+          <h2 className="text-2xl">is&nbsp;
+          <span className={pnlColorClass}>
+            {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`}
+          </span>
+          &nbsp;a year</h2>
           <p onClick={changeMultiplier} className="cursor-pointer">
             if there are&nbsp;
             <span className="hover:text-blue-500">
@@ -84,7 +90,10 @@ const Math = () => {
             &nbsp;trading days a year
           </p>
           <h3 className="text-xs mt-2">
-            Rough projected rest of the year income at this rate and the amount of days left: {inputValue < 0 ? `-$${formatWithCommas(-projectedIncome)}` : `$${formatWithCommas(projectedIncome)}`}
+            Rough projected rest of the year income at this rate and the amount of days left:&nbsp;
+            <span className={pnlColorClass}>
+              {inputValue < 0 ? `-$${formatWithCommas(-projectedIncome)}` : `$${formatWithCommas(projectedIncome)}`}
+            </span>
           </h3>
         </>
       }
