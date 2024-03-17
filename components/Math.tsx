@@ -61,21 +61,28 @@ const Math = () => {
     return `${integerPart}.${decimalPart}`;
   };
 
+  const pnlColorClass = result >= 0  ? 'text-green-700' : 'text-red-700';
+
   return (
     <div>
-      <h1 className="text-3xl mb-2">how much did you make today?</h1>
-      <p className="text-sm mb-2">type how much you made in the input box below</p>
+      <h1 className="text-3xl mb-2">How much did you make today?</h1>
+      <p className="text-sm text-gray-400 mb-2">type how much you made in the input box below</p>
       <input 
        type="number"
        className={`mb-2 w-25 py-1 text-lg text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${shrinkClass}`}
        value={inputValue}
        onChange={handleInputChange}
        onKeyDown={handleKeyDown}
+       placeholder="Enter a number"
       />
       { inputValue !== '' &&
         <>
           &nbsp;a day
-          <h2 className="text-2xl">is {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`} a year</h2>
+          <h2 className="text-2xl">is&nbsp;
+          <span className={pnlColorClass}>
+            {inputValue < 0 ? `-$${formatWithCommas(-result)}` : `$${formatWithCommas(result)}`}
+          </span>
+          &nbsp;a year</h2>
           <p onClick={changeMultiplier} className="cursor-pointer">
             if there are&nbsp;
             <span className="hover:text-blue-500">
@@ -84,7 +91,10 @@ const Math = () => {
             &nbsp;trading days a year
           </p>
           <h3 className="text-xs mt-2">
-            Rough projected rest of the year income at this rate and the amount of days left: {inputValue < 0 ? `-$${formatWithCommas(-projectedIncome)}` : `$${formatWithCommas(projectedIncome)}`}
+            Rough projected rest of the year income at this rate and the amount of days left:&nbsp;
+            <span className={pnlColorClass}>
+              {inputValue < 0 ? `-$${formatWithCommas(-projectedIncome)}` : `$${formatWithCommas(projectedIncome)}`}
+            </span>
           </h3>
         </>
       }
