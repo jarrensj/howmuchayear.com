@@ -29,7 +29,7 @@ const DdCalculator = () => {
         <tbody>
           {data.map((item, index) => (
             <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td className="py-4 px-6">{item.drawdown.toFixed(2)}%</td>
+              <td className="py-4 px-6">-{item.drawdown.toFixed(2)}%</td>
               <td className="py-4 px-6">{item.recovery.toFixed(2)}%</td>
             </tr>
           ))}
